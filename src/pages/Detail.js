@@ -7,10 +7,14 @@ import CommentForm from '../components/CommentForm';
 
 function Detail(props) {
     return <div>
-        <button onClick={browserHistory.goBack}>Go Back</button>
+        <button onClick={ browserHistory.goBack }>Go Back</button>
+        <h2>Other Users</h2>
         <UserCarusel/>
-        <UserInfo userId={props.params.userId}/>
-        <CommentList/>
+        <h2>User Info</h2>
+        <UserInfo userId={ props.params.userId }/>
+        <h2>Last Comments</h2>
+        <CommentList userId={ props.params.userId }/>
+        <h2>Add Comment</h2>
         <CommentForm/>
     </div>
 }
