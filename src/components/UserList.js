@@ -7,7 +7,9 @@ import UserCard from './UserCard'
 
 class UserList extends Component {
     componentDidMount() {
-        this.props.fetchData('http://78qj8.mocklab.io/users');
+        if(!this.props.users.length) {
+            this.props.fetchData('http://78qj8.mocklab.io/users');
+        }
     }
 
     render() {
