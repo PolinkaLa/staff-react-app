@@ -6,6 +6,9 @@ function UserCard(props) {
     <p>{props.firstName}</p>
     <p>{props.lastName}</p>
     <p>{props.position}</p>
+    { props.fullInfo === true &&
+        <p>{props.email}</p>
+    }
 </div>
 }
 
