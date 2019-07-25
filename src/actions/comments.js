@@ -19,6 +19,21 @@ export function commentsFetchDataSuccess(comments) {
     };
 }
 
+export function addComments(comments) {
+    console.log('addComments')
+    return {
+        type: 'LOCAL_COMMENTS',
+        comments
+    };
+}
+
+export function addingComments(comments) {
+    console.log('addingComments')
+    return (dispatch) => {
+        dispatch(addComments(comments));
+    };
+}
+
 export function commentsFetchData(url) {
     return (dispatch) => {
         dispatch(commentsAreLoading(true));
@@ -36,5 +51,6 @@ export function commentsFetchData(url) {
             .then((response) => response.json())
             .then((comments) => dispatch(commentsFetchDataSuccess(comments)))
             .catch(() => dispatch(commentsHaveErrored(true)));
+            
     };
 }

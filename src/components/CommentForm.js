@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addingComments } from '../actions/comments'
 
 class CommentForm extends Component {
     constructor() {
@@ -28,7 +30,6 @@ class CommentForm extends Component {
     }
 
     handleTextValidate = event => {
-        console.log(this.state.text);
         this.setState({
             textIsValid : this.state.text.length > 0 && this.state.text.length <= 128
         })
@@ -39,15 +40,28 @@ class CommentForm extends Component {
     }
 
     handlePhoneValidate= event => {
-        console.log(
-            this.state.phone[0]
-        )
         this.setState({
             phoneIsValid : this.state.phone.length === 11 && this.state.phone[0] == 7
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = event => {
+        event.preventDefault();
+        const data = {
+            user: this.props.userId,
+            comments: {
+                id: 111,
+                title: this.state.title,
+                text: this.state.text,
+                phone: this.state.phone
+            }
+        }
+        this.props.addData(data)
+        this.setState({
+            title: '',
+            text: '',
+            phone: ''
+        })
         alert('Comment was sent!');
     }
 
@@ -87,4 +101,16 @@ class CommentForm extends Component {
     }
 }
 
-export default CommentForm;
+const mapStateToProps = (state) => {
+    return {
+        comments: state,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addData: (data) => dispatch(addingComments(data))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);
