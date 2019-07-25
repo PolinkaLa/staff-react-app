@@ -1,10 +1,11 @@
-body{
+body,
+#root{
     margin: 0;
     background: #2a1820;
     color: #cfae8b;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -32,6 +33,7 @@ h1 {
 .user-detail {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     width: 50vw;
 
 }
@@ -49,6 +51,9 @@ h1 {
 .user-list .user-item p {
     margin: 0;
 }
+.user-list .user-item p span {
+    display: none;
+}
 
 .user-list .user-item:hover {
     text-decoration: underline;
@@ -57,6 +62,14 @@ h1 {
 .user-info p {
     font-size: 1.8rem;
     margin: 5px;
+    font-style: italic
+}
+.user-info p span {
+    font-style: initial;
+}
+.user-info a {
+    font-size: 1.8rem;
+    text-decoration: underline;
 }
 
 .comment-list {
@@ -80,8 +93,107 @@ h1 {
     font-style: italic;
 }
 
+button {
+    background: #532a2a;
+    color: #cfae8b;
+    outline: 1px solid rgba(207, 174, 139, 0.5);
+    border: none;
+    width: 150px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+button:hover,
+button:active,
+button:focus{
+    background: rgba(207, 174, 139, 0.2);
+    outline-color: #cfae8b;
+}
+button:disabled{
+    background: rgba(83, 42, 42, 0.5);
+    outline: 1px solid rgba(207, 174, 139, 0.5);
+    color:rgba(207, 174, 139, 0.5)
+}
+
+button.back {
+    align-self: flex-start;
+}
 
 form {
     display: flex;
     flex-direction: column;
 }
+form input,
+form textarea {
+    background: transparent;
+    border: none;
+    outline: 1px solid rgba(207, 174, 139, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    margin-top: 20px;
+    color: #cfae8b;
+}
+
+form input:focus,
+form textarea:focus {
+    color: #cfae8b;
+    outline-color:  #cfae8b;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: rgba(207, 174, 139, 0.5);
+}
+
+form textarea {
+    resize: none;
+}
+
+form input:first-child {
+    margin-top: 0;
+}
+
+form button {
+    margin-bottom: 20px;
+}
+.error {
+    color: #B22222;
+}
+
+.page-not-found {
+    font-size: 1.5rem;
+    text-align:  center
+}
+.page-not-found a {
+    text-decoration: underline;
+}
+
+.user-carusel {
+    display: flex;
+    flex-direction: row;
+    max-width: 50vw;
+    overflow-x: scroll;
+}
+.user-carusel a {
+    margin: 0 20px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(207, 174, 139, 0.3); 
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(207, 174, 139, 1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(207, 174, 139, 0.5); 
+}
+

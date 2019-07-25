@@ -36,7 +36,6 @@ export function localComments(state = [], action) {
 export function comments(state = [], action) {
     switch (action.type) {
         case 'COMMENTS_FETCH_DATA_SUCCESS':
-            console.log('fech comments')
             return [action.comments];
 
         default:

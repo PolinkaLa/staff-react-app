@@ -1,23 +1,15 @@
 import React, { Component } from 'react';
 import Comment from './Comment';
 import { connect } from 'react-redux';
-import { commentsFetchData } from '../actions/comments';
 
 class CommentList extends Component {
-    constructor() {
-        super();
-        this.commentList = [];
-    }
-
-    componentDidMount() {
-        this.props.fetchData(`http://78qj8.mocklab.io/comments/${this.props.userId}`);
-    }
 
     render() {
+
         this.commentList = this.props.comments.map((item) => (
             item.user == this.props.userId ? item.comments : [])
         )
-
+    
         this.localCommentList = this.props.localComments.map((item) => (
             item.user == this.props.userId ? item.comments : [])
         )
@@ -34,6 +26,11 @@ class CommentList extends Component {
             return <p>Loading...</p>;
         }
 
+        if(!this.localCommentList.length && !this.props.comments){
+            return <p>Loading...</p>;
+        }
+
+        console.log(this.props.comments);
         return (
             <div className='comment-list'>
                 {this.commentList[0].map((comment) => (
@@ -49,17 +46,8 @@ class CommentList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state.comments,
-        haveErrored: state.commentsHaveErrored,
-        areLoading: state.commentsAreLoading,
         localComments: state.localComments
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        fetchData: (url) => dispatch(commentsFetchData(url))
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
+export default connect(mapStateToProps)(CommentList);

@@ -94,7 +94,7 @@ class CommentForm extends Component {
                 onChange={this.handlPhoneChange}
                 onBlur={this.handlePhoneValidate}/>
             { phoneIsValid === false &&
-                <span>error... phone has to have 11 number</span>
+                <span className='error'>error... phone has to have 11 number</span>
             }
             <button disabled={!isEnabled} onClick={this.handleSubmit}>Send</button>
         </form>

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 function PageNotFound() {
 
     return <div className='page-not-found'>
-        <p>This page not found</p>
+        <h1>This page not found</h1>
         <p>Try again from <Link to={'/users'}>home page</Link></p>
     </div>
 }

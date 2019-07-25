@@ -18,10 +18,10 @@ class UserList extends Component {
         }
 
         if (this.props.areLoading) {
-            return <p>Loading…</p>;
+            return <p>Loading...</p>;
         }
 
-        return (<Fragment>
+        return <Fragment>
                 <h1>Staff React App</h1>
                 <div className='user-list'>
                     {this.props.users.map((user) => (
@@ -30,8 +30,7 @@ class UserList extends Component {
                         </Link>
                     ))}
                 </div>
-            </Fragment>
-        );
+        </Fragment>
     }
 }
 

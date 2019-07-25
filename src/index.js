@@ -6,7 +6,7 @@ import configureStore from './store/configureStore';
 import './index.css';
 
 import Home from './pages/Home';
-import Detail from './pages/Detail';
+import Info from './pages/Info';
 import PageNotFound from './pages/PageNotFound'
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
@@ -18,7 +18,7 @@ render(
             <Route path='/'>
                 <IndexRoute path='user' component={Home}/>>
                 <Route path='users' component={Home}>
-                    <Route path=':userId' component={Detail}/>
+                    <Route path=':userId' component={Info}/>
                 </Route>
                 <Route path='*' component={PageNotFound}/>
             </Route>
