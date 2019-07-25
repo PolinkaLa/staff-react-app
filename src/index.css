@@ -1,3 +1,86 @@
+body{
+    margin: 0;
+    background: #2a1820;
+    color: #cfae8b;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #cfae8b;
+    font-size: 1.5rem;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    height: 70vh;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.user-detail {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+
+}
+
+.user-list .user-item {
+    border: 2px solid #532a2a;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.user-list .user-item p {
+    margin: 0;
+}
+
+.user-list .user-item:hover {
+    text-decoration: underline;
+}
+
+.user-info p {
+    font-size: 1.8rem;
+    margin: 5px;
+}
+
+.comment-list {
+    padding: 0 10px;
+}
+.comment-list p {
+    margin: 0;
+}
+
+.comment-list .comment {
+    background: #532a2a;
+    margin: 10px;
+    padding: 10px;
+}
+
+.comment-list .comment .title {
+    font-weight: bold;
+}
+.comment-list .comment .text {
+    margin-top: 5px;
+    font-style: italic;
+}
+
+
 form {
     display: flex;
     flex-direction: column;

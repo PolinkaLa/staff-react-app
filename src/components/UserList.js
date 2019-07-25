@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { usersFetchData } from '../actions/users';
 import { Link } from 'react-router';
@@ -21,14 +21,16 @@ class UserList extends Component {
             return <p>Loading…</p>;
         }
 
-        return (
-            <div className='user-list'>
-                {this.props.users.map((user) => (
-                    <Link to={`/users/${user.id}`} key={user.id+10}>
-                        <UserCard key={user.id} {...user}/>
-                    </Link>
-                ))}
-            </div>
+        return (<Fragment>
+                <h1>Staff React App</h1>
+                <div className='user-list'>
+                    {this.props.users.map((user) => (
+                        <Link to={`/users/${user.id}`} key={user.id+10}>
+                            <UserCard key={user.id} {...user}/>
+                        </Link>
+                    ))}
+                </div>
+            </Fragment>
         );
     }
 }

@@ -2,8 +2,8 @@ import React from 'react';
 
 function Comment(props) {
     return <div className='comment'>
-    <p>{props.title}</p>
-    <p>{props.text}</p>
+    <p className='title'>{props.title}</p>
+    <p className='text'>{props.text}</p>
 </div>
 }
 

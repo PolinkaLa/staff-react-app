@@ -17,12 +17,12 @@ class UserCarusel extends Component{
         }
 
         if (this.props.areLoading) {
-            return <div className='user-carusel'>Loading…</div>;
+            return <div className='user-carusel'>Loading...</div>;
         }
 
         return <div className='user-carusel'>
             {this.props.users.map((user) => (
-                <Link to={`/users/${user.id}`} key={user.id}>
+                <Link to={`/users/${user.id}`} key={user.id} userId={ this.props.userId }>
                     <img src={user.avatar} alt='avatar'/>
                 </Link>
             ))}
