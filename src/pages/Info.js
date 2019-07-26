@@ -3,7 +3,7 @@ import UserCarusel from '../components/UserCarusel';
 import Detail from '../components/Detail';
 import { connect } from 'react-redux';
 import { usersFetchData } from '../actions/users';
-import { browserHistory } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 
 
 class Info extends Component {
@@ -12,7 +12,10 @@ class Info extends Component {
     }
     render() {
         return <Fragment>
-            <button className='back' onClick={ browserHistory.goBack }>Go Back</button>
+            <div className='nav'>
+                <button className='back' onClick={ browserHistory.goBack }>Back</button>
+                <button className='home'><Link to='/'>Home</Link></button>
+            </div>
             <h2>Other Users</h2>
             <UserCarusel users = { this.props.users }/>
             <h1>User Detail</h1>
