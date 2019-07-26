@@ -1,20 +1,22 @@
+import C from '../constants'
+
 export function usersHaveErrored(bool) {
     return {
-        type: 'USERS_HAVE_ERRORED',
+        type: C.USERS_HAVE_ERRORED,
         haveErrored: bool
     };
 }
 
 export function usersAreLoading(bool) {
     return {
-        type: 'USERS_ARE_LOADING',
+        type: C.USERS_ARE_LOADING,
         areLoading: bool
     };
 }
 
 export function usersFetchDataSuccess(users) {
     return {
-        type: 'USERS_FETCH_DATA_SUCCESS',
+        type: C.USERS_FETCH_DATA_SUCCESS,
         users
     };
 }

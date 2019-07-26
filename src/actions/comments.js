@@ -1,34 +1,36 @@
+import C from '../constants'
+
 export function commentsHaveErrored(bool) {
     return {
-        type: 'COMMENTS_HAVE_ERRORED',
+        type: C.COMMENTS_HAVE_ERRORED,
         haveErrored: bool
     };
 }
 
 export function commentsAreLoading(bool) {
     return {
-        type: 'COMMENTS_ARE_LOADING',
+        type: C.COMMENTS_ARE_LOADING,
         areLoading: bool
     };
 }
 
 export function commentsFetchDataSuccess(comments) {
     return {
-        type: 'COMMENTS_FETCH_DATA_SUCCESS',
+        type: C.COMMENTS_FETCH_DATA_SUCCESS,
         comments
     };
 }
 
 export function addComment(data) {
     return {
-        type: 'ADD_COMMENT',
+        type: C.ADD_COMMENT,
         data
     };
 }
 
 export function addUser(data) {
     return {
-        type: 'ADD_USER',
+        type: C.ADD_USER,
         data
     };
 }

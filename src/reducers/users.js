@@ -1,6 +1,8 @@
+import C from '../constants'
+
 export function usersHaveErrored(state = false, action) {
     switch (action.type) {
-        case 'USERS_HAVE_ERRORED':
+        case C.USERS_HAVE_ERRORED:
             return action.haveErrored;
 
         default:
@@ -10,7 +12,7 @@ export function usersHaveErrored(state = false, action) {
 
 export function usersAreLoading(state = false, action) {
     switch (action.type) {
-        case 'USERS_ARE_LOADING':
+        case C.USERS_ARE_LOADING:
             return action.areLoading;
 
         default:
@@ -20,7 +22,7 @@ export function usersAreLoading(state = false, action) {
 
 export function users(state = [], action) {
     switch (action.type) {
-        case 'USERS_FETCH_DATA_SUCCESS':
+        case C.USERS_FETCH_DATA_SUCCESS:
             return action.users;
 
         default:

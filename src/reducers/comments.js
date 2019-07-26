@@ -1,6 +1,8 @@
+import C from '../constants'
+
 export function commentsHaveErrored(state = false, action) {
     switch (action.type) {
-        case 'COMMENTS_HAVE_ERRORED':
+        case C.COMMENTS_HAVE_ERRORED:
             return action.haveErrored;
 
         default:
@@ -10,7 +12,7 @@ export function commentsHaveErrored(state = false, action) {
 
 export function commentsAreLoading(state = false, action) {
     switch (action.type) {
-        case 'COMMENTS_ARE_LOADING':
+        case C.COMMENTS_ARE_LOADING:
             return action.areLoading;
 
         default:
@@ -20,16 +22,16 @@ export function commentsAreLoading(state = false, action) {
 
 export function comments(state = [], action) {
     switch (action.type) {
-        case 'COMMENTS_FETCH_DATA_SUCCESS':
+        case C.COMMENTS_FETCH_DATA_SUCCESS:
             return [action.comments];
 
-        case 'ADD_COMMENT':
+        case C.ADD_COMMENT:
             return state.map((item) => 
                 (item.user == action.data.user) ? 
                 {user: action.data.user, comments: item.comments.concat(action.data.comments)} : 
                 [...state, {}] );
         
-        case 'ADD_USER':
+        case C.ADD_USER:
 
             if(state.find((item) => item.user == action.data.user)){
                 return state
