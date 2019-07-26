@@ -3,16 +3,14 @@ import Comment from './Comment';
 import { connect } from 'react-redux';
 
 class CommentList extends Component {
-
+    componentDidMount() {
+        
+    }
+    
     render() {
 
-        this.commentList = this.props.comments.map((item) => (
-            item.user == this.props.userId ? item.comments : [])
-        )
-    
-        this.localCommentList = this.props.localComments.map((item) => (
-            item.user == this.props.userId ? item.comments : [])
-        )
+        const index = this.props.comments.findIndex((elem) => 
+            elem.user == this.props.userId)
 
         if (this.props.haveErrored) {
             return <p>Error...</p>;
@@ -21,24 +19,22 @@ class CommentList extends Component {
         if (this.props.areLoading) {
             return <p>Loading...</p>;
         }
-        
-        if(!this.commentList[0]){
-            return <p>Loading...</p>;
-        }
 
-        if(!this.localCommentList.length && !this.props.comments){
-            return <p>Loading...</p>;
-        }
+        const arr = this.props.comments[index]
 
-        console.log(this.props.comments);
+        if(!arr) 
+            return <p>Loading...</p>;
+        const arrLast5 = arr.comments.slice(-5)
+
+console.log(arr)
+console.log(arr.comments)
+
         return (
             <div className='comment-list'>
-                {this.commentList[0].map((comment) => (
+                {arrLast5.map((comment) => (
                     <Comment key={comment.id} {...comment}/>
                 ))}
-                {this.localCommentList && this.localCommentList.map((comment) => (
-                    <Comment key={comment.id} {...comment}/>
-                ))}
+
             </div>
         )
     }
@@ -46,7 +42,7 @@ class CommentList extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        localComments: state.localComments
+        comments: state.comments
     };
 };
 

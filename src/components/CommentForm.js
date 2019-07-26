@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addingComments } from '../actions/comments'
+import { addingComment } from '../actions/comments'
 
 class CommentForm extends Component {
     constructor() {
@@ -39,7 +39,7 @@ class CommentForm extends Component {
         this.setState({ phone : event.target.value.replace(/\D/,'')});
     }
 
-    handlePhoneValidate= event => {
+    handlePhoneValidate = event => {
         this.setState({
             phoneIsValid : this.state.phone.length === 11 && this.state.phone[0] == 7
         })
@@ -103,13 +103,13 @@ class CommentForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        comments: state,
+        comments: state.comments,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addData: (data) => dispatch(addingComments(data))
+        addData: (data) => dispatch(addingComment(data))
     };
 };
 

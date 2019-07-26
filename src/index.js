@@ -12,6 +12,9 @@ import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 const store = configureStore();
 
+window.React = React
+window.store = store
+
 render(
     <Provider store={store}>
         <Router history={browserHistory}>

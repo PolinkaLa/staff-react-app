@@ -3,30 +3,24 @@ import UserInfo from './UserInfo';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 import { connect } from 'react-redux';
-import { userFetchData} from '../actions/users';
-import { commentsFetchData } from '../actions/comments';
+import { commentsFetchData, addingUser } from '../actions/comments';
 
 class Detail extends Component {
-    constructor(props){
-        super(props);
-    }
 
     componentWillMount(){
-        this.props.fetchUserData(`http://78qj8.mocklab.io/users/${this.props.userId}`);
-        this.props.fetrhCommentsData (`http://78qj8.mocklab.io/comments/${this.props.userId}`)
-    }
-    forceUpdate() {
-        console.log('fors')
+        this.props.fetchCommentsData(`http://78qj8.mocklab.io/comments/${this.props.userId}`);
+        this.props.addUserComment(this.props.comments);
     }
     render() {
+        const currentUser = this.props.users.find((item) => item.id == this.props.userId);
 
-        if (this.props.haveErrored && this.props.hasErrored && this.props.commentsHaveErrored) {
+        if (this.props.haveErrored && this.props.commentsHaveErrored) {
             return <Fragment>
                     <div className='user-detail'>Error...</div>
                 </Fragment>
         }
 
-        if (this.props.areLoading && this.props.isLoading && this.props.commentsAreLoading) {
+        if (this.props.areLoading && this.props.commentsAreLoading) {
             return <Fragment>
                 <div className='user-detail'>Loading...</div>
             </Fragment>
@@ -35,7 +29,7 @@ class Detail extends Component {
         return <Fragment>
             <div className='user-detail'>
                 <h2>User Info</h2>
-                <UserInfo user = { this.props.user }/>
+                <UserInfo user = { currentUser }/>
                 <h2>Last Comments</h2>
                 <CommentList comments={ this.props.comments } userId={this.props.userId}/>
                 <h2>Add Comment</h2>
@@ -46,20 +40,19 @@ class Detail extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
-        hasErrored: state.userHasErrored,
-        isLoading: state.userIsLoading,
+        users: state.users,
+        haveErrored: state.usersHaveErrored,
+        areLoading: state.usersAreLoading,
         comments: state.comments,
         commentsHaveErrored: state.commentsHaveErrored,
         commentsAreLoading: state.commentsAreLoading
-
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchUserData: (url) => dispatch(userFetchData(url)),
-        fetrhCommentsData: (url) => dispatch(commentsFetchData(url))
+        fetchCommentsData: (url) => dispatch(commentsFetchData(url)),
+        addUserComment: (comments) => dispatch(addingUser(comments))
     };
 };
 

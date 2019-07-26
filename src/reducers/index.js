@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { users, usersHaveErrored, usersAreLoading, user, userHasErrored, userIsLoading } from './users';
-import { comments, commentsHaveErrored, commentsAreLoading, localComments } from './comments'
+import { users, usersHaveErrored, usersAreLoading } from './users';
+import { comments, commentsHaveErrored, commentsAreLoading } from './comments'
 
 export default combineReducers({
     users,
@@ -8,9 +8,5 @@ export default combineReducers({
     usersAreLoading,
     comments,
     commentsHaveErrored,
-    commentsAreLoading,
-    localComments, 
-    user,
-    userHasErrored,
-    userIsLoading
-});
+    commentsAreLoading
+})

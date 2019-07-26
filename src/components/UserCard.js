@@ -7,7 +7,9 @@ function UserCard(props) {
     <p><span>First Name: </span>{props.firstName}</p>
     <p><span>Last Name: </span>{props.lastName}</p>
     <p><span>Position: </span>{props.position}</p>
-    <p><span>Email: </span><a href={linkEmail}>{props.email}</a></p>
+    { props.fullView && 
+        <p><span>Email: </span><a href={linkEmail}>{props.email}</a></p>
+    }
 </div>
 }
 

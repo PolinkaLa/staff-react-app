@@ -18,14 +18,24 @@ export function commentsAreLoading(state = false, action) {
     }
 }
 
-export function localComments(state = [], action) {
+export function comments(state = [], action) {
     switch (action.type) {
-        case 'LOCAL_COMMENTS':
-            if (!state.length)
-                return [action.comments];
+        case 'COMMENTS_FETCH_DATA_SUCCESS':
+            return [action.comments];
+
+        case 'ADD_COMMENT':
+            return state.map((item) => 
+                (item.user == action.data.user) ? 
+                {user: action.data.user, comments: item.comments.concat(action.data.comments)} : 
+                [...state, {}] );
+        
+        case 'ADD_USER':
+
+            if(state.find((item) => item.user == action.data.user)){
+                return state
+            }
             else {
-                return state.map((item) => (
-                    (item.user == action.comments.user) ? (item.comments.push(action.comments.comments)): [...state, action.comments] ))
+                return [...state, action.data]
             }
 
         default:
@@ -33,12 +43,3 @@ export function localComments(state = [], action) {
     }
 }
 
-export function comments(state = [], action) {
-    switch (action.type) {
-        case 'COMMENTS_FETCH_DATA_SUCCESS':
-            return [action.comments];
-
-        default:
-            return state;
-    }
-}

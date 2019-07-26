@@ -19,18 +19,29 @@ export function commentsFetchDataSuccess(comments) {
     };
 }
 
-export function addComments(comments) {
-    console.log('addComments')
+export function addComment(data) {
     return {
-        type: 'LOCAL_COMMENTS',
-        comments
+        type: 'ADD_COMMENT',
+        data
     };
 }
 
-export function addingComments(comments) {
-    console.log('addingComments')
+export function addUser(data) {
+    return {
+        type: 'ADD_USER',
+        data
+    };
+}
+
+export function addingComment(data) {
     return (dispatch) => {
-        dispatch(addComments(comments));
+        dispatch(addComment(data));
+    };
+}
+
+export function addingUser(data) {
+    return (dispatch) => {
+        dispatch(addUser(data));
     };
 }
 
@@ -51,6 +62,5 @@ export function commentsFetchData(url) {
             .then((response) => response.json())
             .then((comments) => dispatch(commentsFetchDataSuccess(comments)))
             .catch(() => dispatch(commentsHaveErrored(true)));
-            
     };
 }
